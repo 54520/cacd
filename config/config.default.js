@@ -49,15 +49,15 @@ module.exports = appInfo => {
   config.mysql = {
     client: {
       // host
-      host: 'rm-wz96yk7n9ka06t3eh.mysql.rds.aliyuncs.com',
+      host: 'localhost',
       // 端口号
       port: '3306',
       // 用户名
-      user: 'admin_demo_user',
+      user: 'root',
       // 密码
-      password: 'admin_pwd@2020',
+      password: 'root',
       // 数据库名
-      database: 'admin_demo',
+      database: 'bet',
     },
   };
 
@@ -65,8 +65,8 @@ module.exports = appInfo => {
   config.redis = {
     client: {
       port: 6379,
-      host: 'adminDemodb',
-      password: '2020redis!',
+      host: '127.0.0.1',
+      password: 'root',
       db: 0,
     },
   };
@@ -75,12 +75,12 @@ module.exports = appInfo => {
     appName: 'AdminDemo',
   };
 
-  // 性能监控
-  config.alinode = {
-    server: 'wss://agentserver.node.aliyun.com:8080',
-    appid: process.env.ADMIN_DEMO_ALINODE_APPID,
-    secret: process.env.ADMIN_DEMO_ALINODE_APPSECRET,
-  };
+//   // 性能监控
+//   config.alinode = {
+//     server: 'wss://agentserver.node.aliyun.com:8080',
+//     appid: process.env.ADMIN_DEMO_ALINODE_APPID,
+//     secret: process.env.ADMIN_DEMO_ALINODE_APPSECRET,
+//   };
 
   /** 运行异常 */
   config.onerror = {

@@ -21,8 +21,8 @@ class TaskController extends Controller {
    */
   async editSchedule() {
     const { ctx } = this;
-    const { username } = ctx.request.headers;
-    await ctx.service.taskService.editSchedule(username, ctx.request.body);
+    // const { username } = ctx.request.headers;
+    await ctx.service.taskService.editSchedule('小鹏', ctx.request.body);
     ctx.body = setResult();
   }
   /**

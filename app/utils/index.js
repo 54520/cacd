@@ -13,9 +13,9 @@ const { RESULT_SUCC } = require('./../constants/result');
  */
 exports.setResult = data => {
   return {
-    code: (data && data.code) || RESULT_SUCC,
-    message: (data && data.messages) || 'success',
-    data: data && data.data,
+    Code: (data && data.code) || RESULT_SUCC,
+    Message: (data && data.messages) || 'success',
+    Result: data && data.data,
   };
 };
 

@@ -54,7 +54,10 @@ module.exports = {
 
     // 获取任务信息
     const schedule = await this.app.mysql.get('schedule_job', { job_id: id });
-
+    console.log('121212',schedule);
+    console.log('SCHEDULE_STATUS',SCHEDULE_STATUS);
+    console.log('checkStatus',checkStatus);
+    await this.logger.log('121212 %j ,SCHEDULE_STATUS %j,checkStatus %j ,this %j',schedule,SCHEDULE_STATUS,checkStatus,this);
     try {
       // 判断任务状态
       if (schedule.status === SCHEDULE_STATUS.STOP && checkStatus) {
@@ -66,10 +69,10 @@ module.exports = {
         // 执行日志初始化
         await jobHandlerLog.init(schedule, triggerType);
 
-        if (schedule.runMode === SCHEDULE_RUN_MODE.BEAN) {
+        if (schedule.runMode == SCHEDULE_RUN_MODE.BEAN) {
           // 调用任务方法
           await this.service.scheduleService[schedule.jobHandler](schedule.params, jobHandlerLog);
-        } else if (schedule.runMode === SCHEDULE_RUN_MODE.SHELL) {
+        } else if (schedule.runMode == SCHEDULE_RUN_MODE.SHELL) {
           // 执行脚本文件
           await this.execScript(schedule, jobHandlerLog);
         }

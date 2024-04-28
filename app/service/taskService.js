@@ -30,9 +30,10 @@ class TaskService extends Service {
     // 判断
     // const jobInfo = await this.app.mysql.get('schedule_job', { jobHandler });
     const jobInfo = this.service.scheduleService[jobHandler];
-    if (!jobInfo && runMode === SCHEDULE_RUN_MODE.BEAN) throw new GlobalError(RESULT_FAIL, '任务处理程序不存在，请重新输入');
+    this.logger.info('jobInfo', jobInfo);
+    if (!jobInfo && runMode == SCHEDULE_RUN_MODE.BEAN) throw new GlobalError(RESULT_FAIL, '任务处理程序不存在，请重新输入');
     if (!job_id) {
-      // 新增
+      // 新增c
       await this.app.mysql.insert('schedule_job', {
         cron,
         jobName,
