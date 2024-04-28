@@ -25,7 +25,6 @@ class JobHandlerLog {
   // 追加日志
   async log(logStr, ...args) {
     const content = formatStr(logStr, ...args);
-    await this.logger.info("我是s",content );
     await this.app.mysql.query('UPDATE schedule_job_log SET job_log = CONCAT(job_log, ?) WHERE id = ?', [ `${content}<br/>`, this.id ]);
   }
 

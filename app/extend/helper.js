@@ -54,10 +54,7 @@ module.exports = {
 
     // 获取任务信息
     const schedule = await this.app.mysql.get('schedule_job', { job_id: id });
-    console.log('121212',schedule);
-    console.log('SCHEDULE_STATUS',SCHEDULE_STATUS);
-    console.log('checkStatus',checkStatus);
-    await this.logger.log('121212 %j ,SCHEDULE_STATUS %j,checkStatus %j ,this %j',schedule,SCHEDULE_STATUS,checkStatus,this);
+    
     try {
       // 判断任务状态
       if (schedule.status === SCHEDULE_STATUS.STOP && checkStatus) {
@@ -83,7 +80,7 @@ module.exports = {
       await jobHandlerLog.error('执行任务`{0}`失败，时间：{1}, 错误信息：{2}', schedule.jobName, new Date().toLocaleString(), error);
     } finally {
       // 释放锁
-      checkLocked && await this.app.redlock.unlock('sendAllUserBroadcast:' + id);
+    //   checkLocked && await this.app.redlock.unlock('sendAllUserBroadcast:' + id);
       // 更新日志记录状态
       await jobHandlerLog.end();
     }
