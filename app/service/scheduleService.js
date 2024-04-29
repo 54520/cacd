@@ -38,12 +38,10 @@ class ScheduleService extends Service {
    * @param {*} params 任务参数
    * @param {*} jobHandlerLog 日志
    */
-  async aaaa(params, jobHandlerLog) {
+  async TAIWAI_ERBA_HANDLER(params, jobHandlerLog) {
     // 此处替换成具体业务代码
     console.log('12121212');
     console.log('jobHandlerLog',jobHandlerLog);
-    await this.logger.info("jobHandlerLog", jobHandlerLog);
-    await this.logger.info("jobHandlerLog.log", jobHandlerLog.log);
     await this.logger.info("111111", params);
     await jobHandlerLog.log("我2222222", params);
   }

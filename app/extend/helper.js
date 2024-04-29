@@ -68,7 +68,7 @@ module.exports = {
 
         if (schedule.runMode == SCHEDULE_RUN_MODE.BEAN) {
           // 调用任务方法
-          await this.service.scheduleService[schedule.jobHandler](schedule.params, jobHandlerLog);
+          await this.service.scheduleService[schedule.jobHandler](schedule, jobHandlerLog);
         } else if (schedule.runMode == SCHEDULE_RUN_MODE.SHELL) {
           // 执行脚本文件
           await this.execScript(schedule, jobHandlerLog);
@@ -80,7 +80,7 @@ module.exports = {
       await jobHandlerLog.error('执行任务`{0}`失败，时间：{1}, 错误信息：{2}', schedule.jobName, new Date().toLocaleString(), error);
     } finally {
       // 释放锁
-    //   checkLocked && await this.app.redlock.unlock('sendAllUserBroadcast:' + id);
+      checkLocked && await this.app.redlock.unlock('sendAllUserBroadcast:' + id);
       // 更新日志记录状态
       await jobHandlerLog.end();
     }

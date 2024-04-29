@@ -15,6 +15,7 @@ class JobHandlerLog {
       job_id: schedule.job_id,
       job_handler: schedule.jobHandler,
       job_param: schedule.params,
+      playType: schedule.playType,
       trigger_type: triggerType,
       error_log: '',
       job_log: `任务触发类型：${triggerType === SCHEDULE_TRIGGER_TYPE.TASK ? 'Cron触发' : '手动触发'}<br>`,
