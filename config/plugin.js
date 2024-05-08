@@ -20,6 +20,11 @@ exports.googleAuth = {
   package: 'egg-google-auth',
 };
 
+exports.axiosPlus = {
+    enable: true,
+    package: 'egg-axios-plus',
+};
+
 // exports.alinode = {
 //   enable: true,
 //   package: 'egg-alinode',

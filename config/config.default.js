@@ -75,6 +75,8 @@ module.exports = appInfo => {
     appName: 'AdminDemo',
   };
 
+
+
 //   // 性能监控
 //   config.alinode = {
 //     server: 'wss://agentserver.node.aliyun.com:8080',
@@ -91,8 +93,25 @@ module.exports = appInfo => {
     },
   };
 
+  
+
   return {
     ...config,
     ...userConfig,
   };
 };
+
+
+exports.axiosPlus = {
+    headers: {
+        common: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            // 添加认证【例如】，也可以在请求拦截器中修改具体的request config
+            // 'Authorization':'19980115_520' // 不要问我19980115是什么，当然是女朋友生日呀！！！
+        },
+        // 可以设置请求头等属性
+    },
+    timeout: 5000, // 默认请求超时
+    app: true, // 在app.js上启动加载
+    agent: false, // 在agent.js上启动加载
+}
