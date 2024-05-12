@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^1.6.8",
+    "dayjs": "^1.11.11",
     "egg": "^2.15.1",
     "egg-alinode": "^2.0.1",
     "egg-axios-plus": "^3.1.3",

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const CONSTANTS = {
   // 定时任务状态
@@ -35,8 +35,17 @@ const CONSTANTS = {
     MANUAL: 0,
   },
   ACTIVE_KYES: {
-    STOP_SCHEDULS: 'stop_schedule',
-    RUN_SCHEDULS: 'run_schedule',
+    STOP_SCHEDULS: "stop_schedule",
+    RUN_SCHEDULS: "run_schedule",
+  },
+  //订单状态
+  ORDER_STATUS: {
+    // 已过期
+    EXPIRED: 0,
+    //已开奖
+    OPEN: 1,
+    //未开奖
+    NOT_OPEN: 2,
   },
 };
 

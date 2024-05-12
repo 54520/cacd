@@ -1,20 +1,14 @@
 const { eum, playTpyeOp } = require("../config/index");
 
-exports.getBetMapOrder = (result, playType, mode = "default") => {
+exports.getBetMapOrder = (result) => {
+  let { amt, playType, randomNumber, list } = result;
   if (playType == eum.TAIWAI_ERBA) {
     //台湾二八数据
     let betMap = playTpyeOp[playType].betMap;
-    let {
-      randomNumber,
-      arrays: { backward },
-    } = result;
-    console.log("result", result);
-    console.log("betMap", betMap);
     let thisBet = betMap[randomNumber];
-    console.log("thisBet", thisBet);
-    let betOrder = backward?.map((v) => {
+    let betOrder = list?.map((v) => {
       return {
-        Bm: 1,
+        Bm: amt,
         Ct: v + "",
         Sd: thisBet[v],
       };

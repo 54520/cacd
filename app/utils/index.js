@@ -36,18 +36,13 @@ exports.generateRandomArrays = ({ numStart = 0, numEnd = 9 }) => {
   };
 };
 
-exports.getBetMapOrder = ({result = {}, playType = null,amt = 0}) => {
-    console.log('playType',playType);
-    console.log('result',result);
+exports.getBetMapOrder = (result) => {
+  let { amt, playType, randomNumber, list } = result;
   if (playType == eum.TAIWAI_ERBA) {
     //台湾二八数据
     let betMap = playTpyeOp[playType].betMap;
-    let {
-      randomNumber,
-      arrays: { backward },
-    } = result;
     let thisBet = betMap[randomNumber];
-    let betOrder = backward?.map((v) => {
+    let betOrder = list?.map((v) => {
       return {
         Bm: amt,
         Ct: v + "",

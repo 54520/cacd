@@ -75,6 +75,7 @@ module.exports = {
         }
       }
     } catch (error) {
+        console.log('error',error);
       await this.logger.info('执行任务`%s`失败，时间：%s, 错误信息：%j', schedule.jobName, new Date().toLocaleString(), error);
       // 记录失败日志
       await jobHandlerLog.error('执行任务`{0}`失败，时间：{1}, 错误信息：{2}', schedule.jobName, new Date().toLocaleString(), error);

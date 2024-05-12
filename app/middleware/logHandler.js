@@ -22,6 +22,6 @@ module.exports = () => {
         ctx.body
       )}, time: ${Date.now() - time}ms`;
     }
-    ctx.logger.info(infoStr);
+    // ctx.logger.info(infoStr);
   };
 };

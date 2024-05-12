@@ -6,11 +6,11 @@ const GlobalError = require('../utils/GlobalError');
 
 module.exports = () => {
   return async function(ctx, next) {
-    console.log('ctx',ctx);
-    console.log('next');
-    const { headers } = ctx.request;
-    // const { token } = headers;
-    console.log('header11111s',headers);
+    // console.log('ctx',ctx);
+    // console.log('next');
+    // const { headers } = ctx.request;
+    // // const { token } = headers;
+    // console.log('header11111s',headers);
 
     // let adminInfo = await ctx.app.redis.get(ADMIN_PREFIX + token);
     // if (!adminInfo) throw new GlobalError(RESULT_LOGIN_FAIL, '登陆超时，请重新登陆');

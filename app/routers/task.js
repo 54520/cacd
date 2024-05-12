@@ -54,4 +54,39 @@ module.exports = (app) => {
     checkTokenHandler,
     controller.bet.getBetConfigList
   );
+
+  //更新token
+  router.get(
+    `/user/updateToken`,
+    checkTokenHandler,
+    controller.api.getGameToken
+  );
+
+  //获取用户余额信息
+  router.get(
+    `/user/getBalance`,
+    checkTokenHandler,
+    controller.api.getConsoleInfo
+  );
+
+  //获取投注记录
+  router.get(
+    `/Bet/getBetRecord`,
+    checkTokenHandler,
+    controller.api.getBetRecord
+  );
+
+  //获取投注记录
+  router.post(
+    `/Bet/getBetLogList`,
+    checkTokenHandler,
+    controller.bet.getBetLogList
+  );
+
+  //获取开奖结果
+    router.get(
+        `/Bet/getPeriodInfo`,
+        checkTokenHandler,
+        controller.api.GetPeriodInfo
+    );
 };
