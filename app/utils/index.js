@@ -5,7 +5,9 @@ const crypto = require("crypto");
 const { RESULT_SUCC } = require("./../constants/result");
 const { eum, playTpyeOp } = require("../config/index");
 
-exports.generateRandomArrays = ({ numStart = 0, numEnd = 9 }) => {
+// exports.createOrderInfo
+
+exports.generateRandomArrays = ({ numStart = 0, numEnd = 9,locating_bladder_startNum = 0,locating_bladder_endNum = 0 }) => {
   // 生成 numStart 到 numEnd 的数值数组
   const num = Array.from(
     { length: numEnd - numStart + 1 },
@@ -14,7 +16,7 @@ exports.generateRandomArrays = ({ numStart = 0, numEnd = 9 }) => {
 
   // 生成 start 和 end 之间的随机数
   const randomNumber =
-    Math.floor(Math.random() * (numEnd - numStart + 1)) + numStart;
+    Math.floor(Math.random() * (locating_bladder_endNum - locating_bladder_startNum + 1)) + locating_bladder_startNum;
 
   // 生成正向数组
   const forwardArray = [];
@@ -38,7 +40,7 @@ exports.generateRandomArrays = ({ numStart = 0, numEnd = 9 }) => {
 
 exports.getBetMapOrder = (result) => {
   let { amt, playType, randomNumber, list } = result;
-  if (playType == eum.TAIWAI_ERBA) {
+  if (playType == eum.TAIWAI_ERBA ||playType == eum.JISHU_ERBA ) {
     //台湾二八数据
     let betMap = playTpyeOp[playType].betMap;
     let thisBet = betMap[randomNumber];

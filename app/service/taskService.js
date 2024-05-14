@@ -26,7 +26,7 @@ class TaskService extends Service {
     return { list, total };
   }
   // 修改/新增定时任务
-  async editSchedule(userName, { job_id, cron, jobName, runMode, jobHandler = '', runSource = '', params = '', description = '',playType = '' }) {
+  async editSchedule(userName, { job_id, cron, jobName, runMode, jobHandler = '', runSource = '', params = '', description = '',playType = 0 }) {
     // 判断
     // const jobInfo = await this.app.mysql.get('schedule_job', { jobHandler });
     const jobInfo = this.service.scheduleService[jobHandler];

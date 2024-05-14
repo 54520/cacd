@@ -84,9 +84,26 @@ module.exports = (app) => {
   );
 
   //获取开奖结果
-    router.get(
-        `/Bet/getPeriodInfo`,
-        checkTokenHandler,
-        controller.api.GetPeriodInfo
-    );
+  router.get(
+    `/Bet/getPeriodInfo`,
+    checkTokenHandler,
+    controller.api.GetPeriodInfo
+  );
+
+  //获取操作日志
+  router.post(
+    `/aliance/getAlianceLogList`,
+    checkTokenHandler,
+    controller.bet.getAlianceLogList
+  );
+  //获取操作日志
+  router.post(
+    `/aliance/getNoList`,
+    checkTokenHandler,
+    controller.bet.getNoList
+  );
+  //新增编辑
+  router.post(`/aliance/addOrEditNo`, checkTokenHandler, controller.bet.noAddOrEdit);
+  //删除账号
+    router.post(`/aliance/deleteNo`, checkTokenHandler, controller.bet.deleteNo);
 };
