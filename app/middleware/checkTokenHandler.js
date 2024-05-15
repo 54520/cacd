@@ -6,22 +6,16 @@ const GlobalError = require('../utils/GlobalError');
 
 module.exports = () => {
   return async function(ctx, next) {
-    // console.log('ctx',ctx);
-    // console.log('next');
-    // const { headers } = ctx.request;
-    // // const { token } = headers;
-    // console.log('header11111s',headers);
-
-    // let adminInfo = await ctx.app.redis.get(ADMIN_PREFIX + token);
-    // if (!adminInfo) throw new GlobalError(RESULT_LOGIN_FAIL, '登陆超时，请重新登陆');
-
+    const { headers } = ctx.request;
+    const { token } = headers;
+    let adminInfo = await ctx.app.redis.get(ADMIN_PREFIX + token);
+    if (!adminInfo) throw new GlobalError(RESULT_LOGIN_FAIL, '登陆已过期，请重新登陆');
     // // 延长token的失效时间
-    // await ctx.app.redis.expire(ADMIN_PREFIX + token, ADMIN_EXPIRE_TIME);
-
-    // adminInfo = JSON.parse(adminInfo);
-    // headers.adminId = adminInfo.adminId;
-    // headers.username = adminInfo.username;
-    // headers.avatarUrl = adminInfo.avatarUrl;
+    await ctx.app.redis.expire(ADMIN_PREFIX + token, ADMIN_EXPIRE_TIME);
+    adminInfo = JSON.parse(adminInfo);
+    headers.adminId = adminInfo.adminId;
+    headers.username = adminInfo.username;
+    headers.avatarUrl = adminInfo.avatarUrl;
 
     await next();
   };

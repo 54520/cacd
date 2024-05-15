@@ -251,9 +251,6 @@ class ApiService extends Service {
       };
     }
   }
-
-  //获取用户提现信息
-  
 }
 
 module.exports = ApiService;

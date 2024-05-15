@@ -23,7 +23,7 @@ class LoginController extends Controller {
    */
   async loginInfo() {
     const { ctx } = this;
-    const adminInfo = JSON.parse(await ctx.app.redis.get(ADMIN_PREFIX + ctx.query.token));
+    const adminInfo = JSON.parse(await ctx.app.redis.get(ADMIN_PREFIX + ctx.request.header.token));
     ctx.body = setResult({ data: adminInfo });
   }
   /**
